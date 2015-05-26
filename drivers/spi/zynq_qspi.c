@@ -775,7 +775,7 @@ void spi_init()
 	debug("%s\n", __func__);
 }
 
-#if defined (CONFIG_MARS_ZX)
+#if defined(CONFIG_MARS_ZX) || defined(CONFIG_MERCURY_ZX)
 extern void zx_set_storage(int store);
 #endif
 
@@ -789,7 +789,7 @@ struct spi_slave *spi_setup_slave(unsigned int bus, unsigned int cs,
 
 	debug("%s: bus: %d cs: %d max_hz: %d mode: %d\n",
 	      __func__, bus, cs, max_hz, mode);
-#if defined (CONFIG_MARS_ZX)
+#if defined(CONFIG_MARS_ZX) || defined(CONFIG_MERCURY_ZX)
 	zx_set_storage(ZX_QSPI);
 #endif
 	if (!spi_cs_is_valid(bus, cs))
